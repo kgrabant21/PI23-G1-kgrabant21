@@ -1,10 +1,10 @@
-﻿using DBLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DBLayer;
 
 namespace EvaulationManager {
     public class StudentRepository {
@@ -34,6 +34,8 @@ namespace EvaulationManager {
             DB.CloseConnection();
             return student;
         }
+
+
         public static List<Student> GetStudents() {
             List<Student> students = new List<Student>();
             string sql = "SELECT * FROM Students";
