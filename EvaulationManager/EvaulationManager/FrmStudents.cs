@@ -27,5 +27,18 @@ namespace EvaulationManager {
             dgvStudents.Columns["Grade"].DisplayIndex = 3;
         }
 
+        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
+        private void btnEvaulateStudent_Click(object sender, EventArgs e) {
+            if(dgvStudents.SelectedRows.Count > 0) {
+                Student selectedStudent = dgvStudents.CurrentRow.DataBoundItem as Student;
+                if(selectedStudent != null) {
+                    FrmEvaluation frmEvaulation = new FrmEvaluation(selectedStudent);
+                    frmEvaulation.ShowDialog();
+                }
+            }
+        }
     }
 }
