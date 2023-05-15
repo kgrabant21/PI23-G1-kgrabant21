@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DBLayer;
 
 namespace EvaulationManager {
     public partial class FrmEvaluation : Form {
@@ -16,29 +17,28 @@ namespace EvaulationManager {
             InitializeComponent();
             student = selectedStudent;
         }
-        private void FrmEvaluation_Load(object sender, EventArgs e) {
-            SetFormText();
-            PopulateActivities();
-        }
+
         private void SetFormText() {
             Text = student.FirstName + " " + student.LastName;
         }
-        private void PopulateActivities() {
-            cboActivities.DataSource = ActivityRepository.GetActivities();
-        }
-        private void cboActivities_SelectedIndexChanged(object sender, EventArgs e) {
-            Activity selectedActivity = cboActivities.SelectedItem as Activity;
-            if (selectedActivity != null) {
-                txtActivityDescription.Text = selectedActivity.Description;
-                txtMinForGrade.Text = selectedActivity.MinPointsForGrade + " /" + selectedActivity.MaxPoints;
-                txtMinForSignature.Text = selectedActivity.MinPointsForSignature + " /" + selectedActivity.MaxPoints;
-                numPoints.Minimum = 0;
-                numPoints.Maximum = selectedActivity.MaxPoints;
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e) {
             Close();
+        }
+
+        private void cboActivities_SelectedIndexChanged_1(object sender, EventArgs e) {
+            var currentActivity = cboActivities.SelectedItem as Activity;
+            txtActivityDescription.Text = currentActivity.Description;
+            txtMinForGrade.Text = currentActivity.MinPointsForGrade + "/" +
+           currentActivity.MaxPoints;
+            txtMinForSignature.Text = currentActivity.MinPointsForSignature + "/" +
+           currentActivity.MaxPoints;
+            numPoints.Minimum = 0;
+            numPoints.Maximum = currentActivity.MaxPoints;
+        }
+        private void FrmEvaluation_Load_1(object sender, EventArgs e) {
+            SetFormText();
+            var activities = ActivityRepository.GetActivities();
+            cboActivities.DataSource = activities;
         }
     }
 }

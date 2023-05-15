@@ -30,14 +30,11 @@ namespace EvaulationManager {
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
-
-        private void btnEvaulateStudent_Click(object sender, EventArgs e) {
-            if(dgvStudents.SelectedRows.Count > 0) {
-                Student selectedStudent = dgvStudents.CurrentRow.DataBoundItem as Student;
-                if(selectedStudent != null) {
-                    FrmEvaluation frmEvaulation = new FrmEvaluation(selectedStudent);
-                    frmEvaulation.ShowDialog();
-                }
+        private void btnEvaluateStudent_Click(object sender, EventArgs e) {
+            Student selectedStudent = dgvStudents.CurrentRow.DataBoundItem as Student;
+            if (selectedStudent != null) {
+                FrmEvaluation frmEvaluation = new FrmEvaluation(selectedStudent);
+                frmEvaluation.ShowDialog();
             }
         }
     }

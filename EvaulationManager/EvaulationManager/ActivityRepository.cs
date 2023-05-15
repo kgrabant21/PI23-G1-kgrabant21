@@ -28,30 +28,30 @@ namespace EvaulationManager {
             return activity;
         }
         public static Activity GetActivity(int id) {
-            Activity aktivnost = null;
+            Activity activity = null;
             string sql = $"SELECT * FROM Activities WHERE Id = {id}";
             DB.OpenConnection();
             var reader = DB.GetDataReader(sql);
             if (reader.HasRows) {
                 reader.Read();
-                aktivnost = CreateObject(reader);
+                activity = CreateObject(reader);
                 reader.Close();
             }
             DB.CloseConnection();
-            return aktivnost;
+            return activity;
         }
         public static List<Activity> GetActivities() {
-            List<Activity> aktivnost = new List<Activity>();
+            List<Activity> activities = new List<Activity>();
             string sql = "SELECT * FROM Activities";
             DB.OpenConnection();
             var reader = DB.GetDataReader(sql);
             while (reader.Read()) {
-                Activity student = CreateObject(reader);
-                aktivnost.Add(student);
+                Activity activity = CreateObject(reader);
+                activities.Add(activity);
             }
             reader.Close();
             DB.CloseConnection();
-            return aktivnost;
+            return activities;
         }
     }
 }
