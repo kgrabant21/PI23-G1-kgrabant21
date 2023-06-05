@@ -6,27 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EvaulationManager {
+namespace EvaluationManager {
     public static class ActivityRepository {
-        private static Activity CreateObject(SqlDataReader reader) {
-            int id = int.Parse(reader["Id"].ToString());
-            string name = reader["Name"].ToString();
-            string description = reader["Description"].ToString();
-            int maxPoints = int.Parse(reader["MaxPoints"].ToString());
-            int minPointsForGrade =
-            int.Parse(reader["MinPointsForGrade"].ToString());
-            int minPointsForSignature =
-           int.Parse(reader["MinPointsForSignature"].ToString());
-            var activity = new Activity {
-                Id = id,
-                Name = name,
-                Description = description,
-                MaxPoints = maxPoints,
-                MinPointsForGrade = minPointsForGrade,
-                MinPointsForSignature = minPointsForSignature
-            };
-            return activity;
-        }
         public static Activity GetActivity(int id) {
             Activity activity = null;
             string sql = $"SELECT * FROM Activities WHERE Id = {id}";
@@ -52,6 +33,25 @@ namespace EvaulationManager {
             reader.Close();
             DB.CloseConnection();
             return activities;
+        }
+        private static Activity CreateObject(SqlDataReader reader) {
+            int id = int.Parse(reader["Id"].ToString());
+            string name = reader["Name"].ToString();
+            string description = reader["Description"].ToString();
+            int maxPoints = int.Parse(reader["MaxPoints"].ToString());
+            int minPointsForGrade =
+            int.Parse(reader["MinPointsForGrade"].ToString());
+            int minPointsForSignature =
+           int.Parse(reader["MinPointsForSignature"].ToString());
+            var activity = new Activity {
+                Id = id,
+                Name = name,
+                Description = description,
+                MaxPoints = maxPoints,
+                MinPointsForGrade = minPointsForGrade,
+                MinPointsForSignature = minPointsForSignature
+            };
+            return activity;
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EvaulationManager")]
+[assembly: AssemblyTitle("DBLayer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EvaulationManager")]
+[assembly: AssemblyProduct("DBLayer")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c3220a96-7427-4c5c-9ed9-cb8926b8553c")]
+[assembly: Guid("f6285efb-1a7b-48c2-b651-63282e4c786e")]
 
 // Version information for an assembly consists of the following four values:
 //

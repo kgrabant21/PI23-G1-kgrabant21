@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DBLayer;
 
-namespace EvaulationManager {
+namespace EvaluationManager {
     public class StudentRepository {
         private static Student CreateObject(SqlDataReader reader) {
             int id = int.Parse(reader["Id"].ToString());
@@ -35,7 +35,6 @@ namespace EvaulationManager {
             return student;
         }
 
-
         public static List<Student> GetStudents() {
             List<Student> students = new List<Student>();
             string sql = "SELECT * FROM Students";
@@ -49,8 +48,5 @@ namespace EvaulationManager {
             DB.CloseConnection();
             return students;
         }
-
-
-
     }
 }

@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace EvaulationManager {
+namespace EvaluationManager {
     public abstract class Person {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public override string ToString() {
-            return FirstName + " " + LastName;   
+            return FirstName + " " + LastName;
         }
     }
 }

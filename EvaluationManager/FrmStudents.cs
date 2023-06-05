@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EvaulationManager {
+namespace EvaluationManager {
     public partial class FrmStudents : Form {
         public FrmStudents() {
             InitializeComponent();
@@ -17,7 +17,6 @@ namespace EvaulationManager {
         private void FrmStudents_Load(object sender, EventArgs e) {
             ShowStudents();
         }
-
         private void ShowStudents() {
             List<Student> students = StudentRepository.GetStudents();
             dgvStudents.DataSource = students;
@@ -27,15 +26,22 @@ namespace EvaulationManager {
             dgvStudents.Columns["Grade"].DisplayIndex = 3;
         }
 
+
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
+
         private void btnEvaluateStudent_Click(object sender, EventArgs e) {
             Student selectedStudent = dgvStudents.CurrentRow.DataBoundItem as Student;
             if (selectedStudent != null) {
                 FrmEvaluation frmEvaluation = new FrmEvaluation(selectedStudent);
                 frmEvaluation.ShowDialog();
             }
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e) {
+            var form = new FrmFinalReport();
+            form.ShowDialog();
         }
     }
 }
